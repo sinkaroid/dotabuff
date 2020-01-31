@@ -21,8 +21,9 @@ echo "${WHITE}"
 echo "usage : ['matchid']"
 
 #get
-read -p "${GREEN}matchid?: " kode
-read -p "${WHITE}${kode} Continue? (Y/N): " confirm && [[ $confirm == [yY] || $confirm == [yY][eE][sS] ]] || exit 1 
+echo "matchid?:"
+read -r kode
+
 echo -e "try to get /${GREEN}$kode ..
 ${WHITE}"
 wget -q -nv -O ${kode}.html https://www.dotabuff.com/matches/${kode};
@@ -37,4 +38,4 @@ echo "parsed on >> "$(realpath $(dirname $FILEPATH))/$(basename $FILEPATH)
 #length
 termin=$(date +"%s")
 difftimelps=$(($termin-$begin))
-echo "${WHITE}$(($difftimelps / 60)) minutes and $(($difftimelps % 60)) sec. elapsed ${RED}dotabuff.sh"
+echo "${WHITE}$(($difftimelps / 60)) minutes and $(($difftimelps % 60)) sec. elapsed ${RED}dotabuffsh"
